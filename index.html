@@ -327,15 +327,40 @@
     margin-bottom: 40px;
   }
   @media(max-width: 560px) { .stall-grid { grid-template-columns: 1fr; } }
-  .stall-item {
-    background: var(--red-bg);
-    border-left: 3px solid var(--red-border);
-    border-radius: 0 8px 8px 0;
-    padding: 12px 16px;
-    font-size: 14px;
-    color: #7a1a1a;
-    font-style: italic;
-  }
+ .stall-item {
+ background: var(--red-bg);
+ border-left: 3px solid var(--red-border);
+ border-radius: 0 8px 8px 0;
+ padding: 12px 16px;
+ font-size: 14px;
+ color: #7a1a1a;
+ font-style: italic;
+ }
+
+ /* ─── DECISION CONTRAST ─── */
+ .decision-contrast {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 14px;
+ margin-top: 22px;
+ }
+ @media(max-width: 560px) { .decision-contrast { grid-template-columns: 1fr; } }
+ .decision-contrast .before,
+ .decision-contrast .after {
+ border-radius: 10px;
+ padding: 18px 18px;
+ border: 1px solid var(--gray-border);
+ }
+ .decision-contrast .before {
+ background: var(--red-bg);
+ border-left: 4px solid var(--red-border);
+ }
+ .decision-contrast .after {
+ background: var(--teal-bg);
+ border-left: 4px solid var(--teal);
+ }
+ .decision-contrast p { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+ .decision-contrast strong { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.01em; }
 
   /* ─── MECHANISM ─── */
   .step-list {
@@ -491,20 +516,33 @@
     padding: 4px 12px;
     border-radius: 20px;
   }
-  .price-cta-row {
+ .price-cta-row {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 20px;
   }
-  .price-compliance {
+ .price-compliance {
     font-size: 11px;
     color: rgba(255,255,255,0.3);
     line-height: 1.5;
     padding-top: 16px;
     border-top: 1px solid rgba(255,255,255,0.06);
-  }
+ }
+
+ /* ─── ROI BOX ─── */
+ .roi-box {
+ background: rgba(0,137,123,0.10);
+ border: 1px solid rgba(0,137,123,0.25);
+ border-radius: 10px;
+ padding: 16px 18px;
+ margin: 18px 0 18px;
+ color: rgba(255,255,255,0.85);
+ line-height: 1.65;
+ }
+ .roi-box strong { color: #fff; }
+ .roi-note { display: inline-block; margin-top: 8px; font-size: 12px; color: rgba(255,255,255,0.45); }
 
   /* ─── OBJECTIONS ─── */
   .objection-list { display: grid; gap: 2px; }
@@ -650,7 +688,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">RetireWise<span> AI</span></a>
-    <a href="https://oncehub.com/PAGE-A2441E2BBC" class="nav-cta">Book a 20-min Demo →</a>
+ <a href="https://oncehub.com/PAGE-A2441E2BBC" class="nav-cta">Book Demo &amp; See Your First Clarity Map →</a>
   </div>
 </nav>
 
@@ -661,7 +699,7 @@
     <h1>Stop hearing <em>"let me think about it"</em> after a great discovery call.</h1>
     <p class="hero-sub">RetireWise AI shows retirement tradeoffs live on the call — so prospects see the real cost of waiting, compare options clearly, and move to the next step with confidence.</p>
     <div class="hero-cta-row">
-      <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary">Book a 20-min Demo →</a>
+ <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary">Book Demo &amp; See Your First Clarity Map →</a>
       <a href="#offer" class="btn-ghost">See what's included ↓</a>
     </div>
     <div class="hero-trust">
@@ -709,6 +747,25 @@
     </div>
 
     <p style="font-size:15px;color:var(--muted);line-height:1.7;">These aren't objections to you or your process. They're the natural result of asking someone to make a six-figure decision without being able to see the tradeoffs clearly. RetireWise AI closes that gap — live, on the call, in plain language.</p>
+  </div>
+</section>
+
+<!-- DECISION MOMENT (contrast) -->
+<section class="alt">
+  <div class="container">
+    <div class="section-label">The decision moment</div>
+    <h2>Show the transformation, don’t just explain it</h2>
+
+    <div class="decision-contrast">
+      <div class="before">
+        <p>Before:</p>
+        <strong>“Let me think about it.”</strong>
+      </div>
+      <div class="after">
+        <p>After:</p>
+        <strong>“What’s the next step?”</strong>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -760,7 +817,7 @@
         <div class="del-num">01</div>
         <div class="del-content">
           <div class="del-title">Live retirement scenario engine</div>
-          <div class="del-desc">Run 62 vs 65 vs 67 comparisons, tax-impact overlays, sequence risk prompts, and the "do nothing" baseline — live on the call, in plain language your prospect can see and act on immediately. Replaces a $2,500–$5,000 custom planning build.</div>
+          <div class="del-desc">Show prospects exactly what happens if they retire at 62 vs 65 vs 67 (plus the “do nothing” baseline) — so they stop hesitating and start deciding on the call. Includes tax-impact prompts and clear tradeoffs in plain language.</div>
           <div class="del-result">"Prospects asked 'what do we do next' before the call ended."</div>
           <div class="del-value">Standalone value: $2,500</div>
         </div>
@@ -770,7 +827,7 @@
         <div class="del-num">02</div>
         <div class="del-content">
           <div class="del-title">AI discovery assistant</div>
-          <div class="del-desc">Surfaces the 4 fear types — income, tax, timing, legacy — with the right questions at the right moment. Drafts compliant call recaps in seconds. Generates client-language explanations so you stop translating jargon mid-call and start guiding decisions.</div>
+          <div class="del-desc">Helps you uncover the real decision blocker fast (income, tax, timing, legacy, spouse hesitation) so you stop guessing and start guiding the next step. Includes compliant recap drafting and client-language explanations.</div>
           <div class="del-result">"Discovery calls went from 90 min to under an hour."</div>
           <div class="del-value">Standalone value: $1,200</div>
         </div>
@@ -790,7 +847,7 @@
         <div class="del-num">04</div>
         <div class="del-content">
           <div class="del-title">Client-ready visual outputs</div>
-          <div class="del-desc">Clean, spouse-friendly scenario visuals your prospect can take home, share with a partner, and act on — without needing you to re-explain. Reduces the "we need to discuss it" delay that kills post-call momentum and stalls your pipeline.</div>
+          <div class="del-desc">Gives clients and spouses something they can actually understand and act on. Reduces post-call drift and “we need to discuss it” stalls by making the decision visible outside the meeting.</div>
           <div class="del-result">"This is the clearest anyone has ever explained it to us."</div>
           <div class="del-value">Standalone value: $600</div>
         </div>
@@ -800,7 +857,7 @@
         <div class="del-num">05</div>
         <div class="del-content">
           <div class="del-title">Done-with-you onboarding call</div>
-          <div class="del-desc">One focused 45-minute call where we configure the full system around your current workflow, prospect type, and practice style. Live within 48 hours. Nothing to install. No IT required. You don't figure this out alone — we build it with you.</div>
+          <div class="del-desc">One focused onboarding call where we configure the system around your workflow and prospect type so you can run it on your very next discovery call. Nothing to install. No IT required. We build it with you.</div>
           <div class="del-result">"Was running it in my first call the next morning."</div>
           <div class="del-value">Standalone value: $500</div>
         </div>
@@ -823,8 +880,16 @@
         <span class="price-pill">No install required</span>
         <span class="price-pill">Compliance-safe</span>
       </div>
+
+      <div class="roi-box">
+        <strong>The math is simple:</strong><br><br>
+        One $300K rollover ≈ ~$3,000/year in advisory fees.<br>
+        RetireWise AI = $997 one-time.<br><br>
+        <span class="roi-note">Illustrative example only. Actual results vary by advisor, fee model, and client situation.</span>
+      </div>
+
       <div class="price-cta-row">
-        <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary">Book Demo / Setup Call →</a>
+        <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary">Book Demo &amp; See Your First Clarity Map →</a>
         <a href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" class="btn-ghost">Buy Now — $997</a>
       </div>
       <div class="price-compliance">You remain the advisor and compliance owner at all times. RetireWise AI is decision-support software — not financial advice. All outputs are for internal advisor use unless you choose to share them with clients. Suitable for use within standard RIA/CFP compliance frameworks.</div>
@@ -896,6 +961,15 @@
   </div>
 </section>
 
+<!-- WHY THIS PAYS FOR ITSELF -->
+<section class="alt">
+  <div class="container">
+    <div class="section-label">Why this pays for itself</div>
+    <h2>You Do Not Need Many Wins for This to Matter</h2>
+    <p class="lead">You do not need this to transform your whole business overnight. You only need it to help you convert one more qualified prospect, one conversation sooner, with more confidence. That is where the ROI lives.</p>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <div class="final-cta">
   <div class="container">
@@ -903,7 +977,7 @@
     <h2>Turn uncertainty into clarity.<br>Clarity into commitment.</h2>
     <p class="lead">If you want more prospects to move forward during — or immediately after — the discovery call, this is the system. 14 founder pricing slots remaining.</p>
     <div class="final-cta-btns">
-      <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary" style="font-size:16px;padding:16px 32px;">Book Demo / Setup Call →</a>
+      <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary" style="font-size:16px;padding:16px 32px;">Book Demo &amp; See Your First Clarity Map →</a>
       <a href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" class="btn-ghost">Buy Now — $997</a>
     </div>
     <div class="final-trust">Setup included · Live in 48 hrs · 3-Call Clarity Guarantee · Compliance-safe</div>
