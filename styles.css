@@ -240,6 +240,19 @@ details p { margin-top: 0.8rem; }
 .compliance-note strong { display: inline-block; margin-bottom: 0.35rem; }
 .compliance-note p { margin: 0; }
 
+/* CRO enhancements */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55); }
+  70% { box-shadow: 0 0 0 12px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+.pulse { animation: pulse 1.6s infinite; border-radius: 999px; padding: 0 0.25rem; }
+
+.guarantee-box.highlight {
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.22) 10%, rgba(17, 28, 51, 0.75) 100%);
+  border: 2px solid rgba(134, 239, 172, 0.55);
+}
+
 @media (max-width: 900px) {
   .hero-grid, .two-col, .footer-grid, .pain-grid, .offer-grid { grid-template-columns: 1fr; }
   .nav { min-height: auto; padding: 1rem 0; align-items: flex-start; }
