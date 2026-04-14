@@ -168,8 +168,81 @@ details p { margin-top: 0.8rem; }
   color: #9fb2c9;
 }
 
+/* Social proof */
+.testimonial-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.6rem;
+}
+.testimonial-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(15, 23, 42, 0.6);
+  box-shadow: var(--shadow);
+  padding: 1.2rem 1.25rem;
+  margin: 0;
+}
+.testimonial-card blockquote {
+  margin: 0;
+  color: #dbe5f3;
+  line-height: 1.6;
+  font-weight: 600;
+}
+.testimonial-card figcaption {
+  margin-top: 0.9rem;
+  color: #9fb2c9;
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+/* Demo visual mock */
+.demo-mock {
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.65));
+  border-radius: var(--radius);
+  padding: 1.2rem;
+}
+.demo-mock--large { padding: 1.5rem; }
+.demo-mock__title { font-weight: 800; font-size: 1.1rem; margin-bottom: 0.35rem; }
+.demo-mock__subtitle { color: #bfeaff; font-weight: 700; margin-bottom: 1rem; }
+.demo-mock__caption { margin: 0.9rem 0 0; color: var(--muted); }
+.demo-mock__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  align-items: center;
+}
+.demo-chip {
+  border: 1px solid rgba(248, 250, 252, 0.16);
+  background: rgba(248, 250, 252, 0.06);
+  border-radius: 999px;
+  padding: 0.55rem 0.75rem;
+  text-align: center;
+  color: #e8f2ff;
+  font-weight: 800;
+}
+.demo-line {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: rgba(148, 163, 184, 0.22);
+  margin-top: 0.2rem;
+}
+
+/* Compliance note */
+.compliance-note {
+  margin-top: 1.1rem;
+  padding: 1rem 1.05rem;
+  border-radius: 18px;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  background: rgba(8, 16, 31, 0.35);
+}
+.compliance-note strong { display: inline-block; margin-bottom: 0.35rem; }
+.compliance-note p { margin: 0; }
+
 @media (max-width: 900px) {
   .hero-grid, .two-col, .footer-grid, .pain-grid, .offer-grid { grid-template-columns: 1fr; }
   .nav { min-height: auto; padding: 1rem 0; align-items: flex-start; }
   .nav, .nav-cta { flex-direction: column; }
+  .testimonial-grid { grid-template-columns: 1fr; }
 }
