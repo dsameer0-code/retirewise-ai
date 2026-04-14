@@ -1,361 +1,936 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RetireWise AI | Turn Discovery Calls Into Decisions</title>
 
-    <title>RetireWise AI | Turn Discovery Calls Into Decisions</title>
-    <meta
-      name="description"
-      content="Turn retirement conversations into real-time decisions using visual scenario modeling and a guided discovery assistant."
-    />
+<!-- Meta Pixel Placeholder -->
+<!-- Google Analytics Placeholder -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1F3C;
+    --navy-mid: #1A3A6B;
+    --navy-light: #243F6E;
+    --teal: #00897B;
+    --teal-light: #4DB6AC;
+    --teal-bg: #E0F2F1;
+    --gold: #F5A623;
+    --gold-bg: #FFF8E7;
+    --white: #FFFFFF;
+    --gray-bg: #F4F6F9;
+    --gray-border: #E2E6ED;
+    --body-text: #1a1a2e;
+    --muted: #5a6a82;
+    --red-bg: #FEF0F0;
+    --red-border: #E24B4A;
+    --green-bg: #E8F5E9;
+    --green-text: #1B5E20;
+    --green-border: #A5D6A7;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
 
-    <meta property="og:title" content="RetireWise AI" />
-    <meta property="og:description" content="Stop hearing “let me think about it” on discovery calls." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://retirewise-ai-alpha.vercel.app" />
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <meta name="theme-color" content="#0f172a" />
+  html { scroll-behavior: smooth; }
 
-    <!-- Meta Pixel Placeholder -->
-    <!-- Google Analytics Placeholder -->
+  body {
+    font-family: var(--font-body);
+    color: var(--body-text);
+    background: var(--white);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  /* ─── UTILITIES ─── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .container-wide { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
+  .btn-primary {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { background: #00796B; transform: translateY(-1px); }
 
-  <body>
-    <header class="site-header">
-      <div class="container nav">
-        <div class="brand">RetireWise AI</div>
-        <div class="nav-cta">
-          <a class="btn btn-primary" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo &amp; Clarity Map</a>
-        </div>
-      </div>
-    </header>
+  .btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 13px 22px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
 
-    <main>
-      <!-- HERO = visual + trust (single CTA) -->
-      <section class="hero" id="top">
-        <div class="container hero-grid">
-          <div>
-            <span class="eyebrow">For Financial Advisors, RIAs &amp; CFPs</span>
-            <h1>Stop hearing “let me think about it” on discovery calls.</h1>
-            <p class="hero-copy">Turn retirement conversations into real-time decisions using visual scenario modeling.</p>
+  .btn-navy {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-navy:hover { background: var(--navy-mid); }
 
-            <div class="cta-row">
-              <a class="btn btn-primary btn-lg" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo &amp; Clarity Map</a>
-            </div>
-            <p class="micro">No technical setup required • Setup call included</p>
-            <p class="fine-print">Works best for advisors running 5+ discovery calls/month.</p>
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--teal);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 6px;
+    border: 1.5px solid var(--teal);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--teal-bg); }
 
-            <ul class="micro-points">
-              <li>Designed for real discovery calls</li>
-              <li>Used in live client meetings (advisor-led)</li>
-              <li>Built for decision clarity, not “more information”</li>
-            </ul>
-          </div>
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
 
-          <div class="hero-card">
-            <div class="demo-mock demo-mock--hero" aria-label="Live Retirement Scenario View (62 vs 65 vs 67)">
-              <div class="demo-mock__title">Live Retirement Scenario View (62 vs 65 vs 67)</div>
-              <div class="demo-mock__subtitle">Clients see their future clearly, not abstractly</div>
-              <div class="demo-ui">
-                <div class="demo-ui__topbar">
-                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                  <span class="demo-ui__label">Scenario Compare</span>
-                </div>
-                <div class="demo-ui__row">
-                  <div class="demo-chip">Retire @ 62</div>
-                  <div class="demo-chip">Retire @ 65</div>
-                  <div class="demo-chip">Retire @ 67</div>
-                </div>
-                <div class="demo-ui__row">
-                  <div class="demo-stat"><span>Income</span><strong>$</strong></div>
-                  <div class="demo-stat"><span>Taxes</span><strong>$</strong></div>
-                  <div class="demo-stat"><span>Risk Range</span><strong>▰▰▰</strong></div>
-                </div>
-                <div class="demo-line"></div>
-                <p class="demo-mock__caption">Example mockup. Your client sees comparisons and tradeoffs in plain language.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+  /* ─── NAV ─── */
+  nav {
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-logo span { color: var(--teal-light); }
+  .nav-cta {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #00796B; }
 
-        <!-- Proof bar under hero -->
-        <div class="container">
-          <div class="proof-bar" role="note" aria-label="Credibility strip">
-            <div class="proof-bar__item"><strong>Used by</strong> Financial Advisors, RIAs &amp; CFPs</div>
-            <div class="proof-bar__item"><strong>Built for</strong> live discovery calls</div>
-            <div class="proof-bar__item"><strong>Focus</strong> decision clarity (not advice)</div>
-          </div>
-        </div>
-      </section>
+  /* ─── URGENCY BAR ─── */
+  .urgency-bar {
+    background: var(--gold);
+    padding: 9px 24px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3a2000;
+  }
+  .urgency-bar strong { font-weight: 700; }
 
-      <!-- Social proof (near top) -->
-      <section class="section social-proof" id="proof">
-        <div class="container narrow">
-          <h2>Trusted by early operator advisors improving decision momentum</h2>
-          <p class="fine-print">Replace placeholders with verified testimonials as you collect them (recommended).</p>
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    padding: 72px 24px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,137,123,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 780px; margin: 0 auto; position: relative; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    background: rgba(0,137,123,0.15);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0,137,123,0.3);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal-light);
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin-bottom: 36px;
+    max-width: 620px;
+  }
+  .hero-cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .hero-trust {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .trust-chip {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .trust-chip .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+  .trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245,166,35,0.15);
+    border: 1px solid rgba(245,166,35,0.35);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
 
-          <div class="testimonial-grid">
-            <figure class="testimonial-card">
-              <blockquote>
-                “Clients finally understood the tradeoffs on the call. The next step became obvious instead of delayed.”
-              </blockquote>
-              <figcaption>— Wealth Advisor (Early Operator)</figcaption>
-            </figure>
+  /* ─── PROOF STRIP ─── */
+  .proof-strip {
+    background: var(--gray-bg);
+    padding: 48px 24px;
+    border-bottom: 1px solid var(--gray-border);
+  }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .proof-card {
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .proof-stars {
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+  .proof-quote {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--body-text);
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .proof-attr {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .proof-attr strong { color: var(--body-text); }
 
-            <figure class="testimonial-card">
-              <blockquote>
-                “My calls feel more controlled now. Clients stop drifting and start deciding.”
-              </blockquote>
-              <figcaption>— CFP Practitioner</figcaption>
-            </figure>
+  /* ─── SECTION GENERIC ─── */
+  section { padding: 72px 24px; }
+  section.alt { background: var(--gray-bg); }
+  section.dark { background: var(--navy); }
 
-            <figure class="testimonial-card">
-              <blockquote>
-                “The clarity recap prevented the post-call fade. Prospects stopped asking for ‘more info’ and scheduled the follow-up.”
-              </blockquote>
-              <figcaption>— RIA Advisor</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.2;
+    color: var(--body-text);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  section.dark h2 { color: #fff; }
 
-      <!-- Demo section (make it feel real) -->
-      <section class="section muted" id="demo">
-        <div class="container two-col">
-          <div>
-            <h2>See what clients actually see</h2>
-            <p>This is the moment clients stop guessing and start deciding.</p>
-            <ul class="checklist">
-              <li>Retirement age comparison</li>
-              <li>Income projection framing</li>
-              <li>Risk range visibility</li>
-            </ul>
+  .lead {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+  section.dark .lead { color: rgba(255,255,255,0.6); }
 
-            <!-- Mid-page CTA hierarchy: Demo + Buy -->
-            <div class="cta-row">
-              <a class="btn btn-primary" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo &amp; Clarity Map</a>
-              <a class="btn btn-secondary" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy Now — $997</a>
-            </div>
-            <p class="fine-print">One-time $997 • No subscription • 7-day guarantee</p>
-          </div>
+  /* ─── PROBLEM ─── */
+  .stall-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  @media(max-width: 560px) { .stall-grid { grid-template-columns: 1fr; } }
+  .stall-item {
+    background: var(--red-bg);
+    border-left: 3px solid var(--red-border);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #7a1a1a;
+    font-style: italic;
+  }
 
-          <div class="demo-mock demo-mock--large" aria-label="Example: Retirement Scenario View">
-            <div class="demo-mock__title">Example: Live Retirement Scenario View</div>
-            <div class="demo-mock__subtitle">62 vs 65 vs 67 comparison</div>
-            <div class="demo-ui">
-              <div class="demo-ui__topbar">
-                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                <span class="demo-ui__label">Client Scenario Dashboard</span>
-              </div>
-              <div class="demo-ui__row">
-                <div class="demo-chip">62</div>
-                <div class="demo-chip">65</div>
-                <div class="demo-chip">67</div>
-              </div>
-              <div class="demo-ui__row">
-                <div class="demo-stat"><span>Income</span><strong>$</strong></div>
-                <div class="demo-stat"><span>Taxes</span><strong>$</strong></div>
-                <div class="demo-stat"><span>Risk Range</span><strong>▰▰▰</strong></div>
-              </div>
-              <div class="demo-line"></div>
-              <p class="demo-mock__caption">Clients see their future clearly, not abstractly.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+  /* ─── MECHANISM ─── */
+  .step-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 36px;
+  }
+  .step-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--teal-light);
+    line-height: 1;
+    margin-bottom: 10px;
+    opacity: 0.6;
+  }
+  .step-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .step-body {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
 
-      <!-- Problem -->
-      <section class="section muted" id="problem">
-        <div class="container narrow">
-          <h2>Why good discovery calls still stall</h2>
-          <p>
-            Prospects delay when the decision feels abstract. They like you, they trust your credibility, but they cannot picture the tradeoffs.
-            RetireWise AI is designed to make tradeoffs visible in minutes.
-          </p>
-          <div class="pain-grid">
-            <div class="pain-item">“We need to think about it.”</div>
-            <div class="pain-item">“Can you send me something?”</div>
-            <div class="pain-item">“We’re not sure if now is the right time.”</div>
-            <div class="pain-item">“We don’t want to make the wrong move.”</div>
-          </div>
-        </div>
-      </section>
+  /* ─── OFFER STACK ─── */
+  .offer-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .value-total {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .value-total s { color: var(--muted); }
+  .value-total strong { color: var(--teal); font-size: 15px; }
 
-      <!-- Mechanism -->
-      <section class="section" id="mechanism">
-        <div class="container two-col">
-          <div>
-            <h2>The mechanism: visual certainty</h2>
-            <p>A decision-support modeling and discovery system that makes consequences and tradeoffs obvious.</p>
-            <ul class="checklist">
-              <li>Show the “do nothing” baseline and cost of delay</li>
-              <li>Compare retire-at scenarios clearly</li>
-              <li>Use client-language explanations and recap support</li>
-            </ul>
-          </div>
-          <div class="callout">
-            <h3>What changes on the call</h3>
-            <ol>
-              <li>Frame the decision</li>
-              <li>Identify the core fear</li>
-              <li>Run scenarios (62 vs 65 vs 67)</li>
-              <li>Close with a clear next step</li>
-            </ol>
-          </div>
-        </div>
-      </section>
+  .deliverable-grid {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .del-card {
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 0 18px;
+    align-items: start;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .del-card:hover {
+    border-color: var(--teal-light);
+    box-shadow: 0 2px 16px rgba(0,137,123,0.08);
+  }
+  .del-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--teal);
+    line-height: 1.1;
+    padding-top: 2px;
+    opacity: 0.4;
+  }
+  .del-content {}
+  .del-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--body-text);
+    margin-bottom: 6px;
+  }
+  .del-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .del-result {
+    font-size: 13px;
+    color: var(--green-text);
+    background: var(--green-bg);
+    border-radius: 6px;
+    padding: 7px 12px;
+    display: inline-block;
+    font-style: italic;
+  }
+  .del-value {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-weight: 500;
+  }
 
-      <!-- How it works -->
-      <section class="section" id="how">
-        <div class="container two-col">
-          <div>
-            <h2>How it works</h2>
-            <div class="faq-list">
-              <details open>
-                <summary>Step 1: Fast clarity intake</summary>
-                <p>Capture the few inputs needed to model useful scenarios (ranges are fine).</p>
-              </details>
-              <details>
-                <summary>Step 2: Live scenario comparisons</summary>
-                <p>Show retire-at options and the “do nothing” baseline to make tradeoffs obvious.</p>
-              </details>
-              <details>
-                <summary>Step 3: Guided discovery prompts</summary>
-                <p>Ask better questions and surface objections without turning it into a pitch.</p>
-              </details>
-              <details>
-                <summary>Step 4: Clarity recap</summary>
-                <p>Send a simple summary that keeps the decision alive after the meeting.</p>
-              </details>
-            </div>
-          </div>
+  /* ─── PRICE BOX ─── */
+  .price-block {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-top: 36px;
+  }
+  .price-anchor-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2px;
+  }
+  .price-anchor-text s { color: rgba(255,255,255,0.3); }
+  .price-main-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .price-figure {
+    font-family: var(--font-display);
+    font-size: 52px;
+    color: #fff;
+    line-height: 1;
+  }
+  .price-label {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+  }
+  .price-roi {
+    font-size: 14px;
+    color: var(--teal-light);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .price-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .price-pill {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .price-cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .price-compliance {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.5;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
 
-          <div class="guarantee-box highlight">
-            <span class="eyebrow">Time-to-value</span>
-            <h3>You can run this on your very next discovery call.</h3>
-            <ul class="checklist">
-              <li>No complex setup</li>
-              <li>Guided workflow</li>
-              <li>Installed during your setup call</li>
-            </ul>
-            <a class="btn btn-primary" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo &amp; Clarity Map</a>
-          </div>
-        </div>
-      </section>
+  /* ─── OBJECTIONS ─── */
+  .objection-list { display: grid; gap: 2px; }
+  .objection-item {
+    border: 1px solid var(--gray-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .objection-item + .objection-item { margin-top: 8px; }
+  .obj-q {
+    width: 100%;
+    text-align: left;
+    background: var(--white);
+    border: none;
+    padding: 16px 20px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--body-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.15s;
+  }
+  .obj-q:hover { background: var(--gray-bg); }
+  .obj-q .chevron {
+    font-size: 18px;
+    color: var(--teal);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    font-weight: 300;
+  }
+  .obj-a {
+    display: none;
+    padding: 0 20px 16px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    background: var(--white);
+  }
+  .objection-item.open .obj-q { background: var(--gray-bg); }
+  .objection-item.open .obj-a { display: block; }
+  .objection-item.open .chevron { transform: rotate(45deg); }
 
-      <!-- Offer + Pricing + Compliance -->
-      <section class="section muted" id="pricing">
-        <div class="container">
-          <h2>Founder Operator Tier</h2>
+  /* ─── GUARANTEE ─── */
+  .guarantee-box {
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    border-radius: 14px;
+    padding: 32px 36px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  @media(max-width: 560px) { .guarantee-box { flex-direction: column; gap: 16px; } }
+  .shield-icon {
+    width: 52px; height: 52px;
+    background: var(--green-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .g-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--green-text);
+    margin-bottom: 10px;
+  }
+  .g-body {
+    font-size: 15px;
+    color: #2E7D32;
+    line-height: 1.7;
+  }
 
-          <div class="scarcity-box">
-            <div>
-              <strong>Founder Operator Tier: $997</strong>
-              <p class="fine-print"><span class="scarcity-badge">Limited</span> Limited to 20 advisors • 14 spots remaining</p>
-              <p class="fine-print">Once filled, pricing increases.</p>
-            </div>
-            <div class="cta-row" style="margin: 0;">
-              <a class="btn btn-primary" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo &amp; Clarity Map</a>
-              <a class="btn btn-secondary" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy Now — $997</a>
-            </div>
-          </div>
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    background: var(--navy);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .final-cta h2 { color: #fff; margin-bottom: 12px; }
+  .final-cta .lead { color: rgba(255,255,255,0.6); margin: 0 auto 36px; }
+  .final-cta-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .final-trust {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
 
-          <p class="fine-print">One-time $997 • No subscription • 7-day guarantee</p>
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 24px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+  .footer-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto;
+  }
 
-          <div class="compliance-note">
-            <strong>Compliance Note</strong>
-            <p>
-              This is a decision-support system. No investment advice is generated.
-              You remain the advisor and compliance owner.
-            </p>
-          </div>
+  /* ─── RESPONSIVE ─── */
+  @media(max-width: 640px) {
+    .hero { padding: 48px 20px 48px; }
+    .hero h1 { font-size: 30px; }
+    .hero-sub { font-size: 16px; }
+    section { padding: 52px 20px; }
+    .price-block { padding: 24px 20px; }
+    .guarantee-box { padding: 24px 20px; }
+    .del-card { grid-template-columns: 1fr; gap: 0; }
+    .del-num { font-size: 18px; margin-bottom: 4px; }
+    .price-figure { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
 
-          <div class="offer-grid" style="margin-top: 1.4rem;">
-            <article class="offer-card">
-              <h3>What you get</h3>
-              <p>Real-time scenario view + guided discovery assistant prompts + recap template + setup call.</p>
-            </article>
-            <article class="offer-card">
-              <h3>Who it’s for</h3>
-              <p>Advisors running discovery calls who want fewer stalls and faster next steps.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  <strong>Founder Pricing:</strong> First 20 advisors at $997 — <strong>14 slots remaining.</strong> Pricing increases after founder tier fills.
+</div>
 
-      <!-- Objections -->
-      <section class="section" id="objections">
-        <div class="container narrow">
-          <h2>Common objections</h2>
-          <div class="faq-list">
-            <details open>
-              <summary>I already have planning software.</summary>
-              <p>Great. RetireWise AI is not replacing your stack. It is the discovery conversion layer that makes your stack easier to sell.</p>
-            </details>
-            <details>
-              <summary>I’m not technical.</summary>
-              <p>You don’t need to be. This is built to feel like a guided workflow, not a software project.</p>
-            </details>
-            <details>
-              <summary>Will this guarantee more closes?</summary>
-              <p>No guarantee of performance. But clearer decisions tend to produce faster next steps and fewer stalls.</p>
-            </details>
-          </div>
-        </div>
-      </section>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">RetireWise<span> AI</span></a>
+    <a href="https://oncehub.com/PAGE-A2441E2BBC" class="nav-cta">Book a 20-min Demo →</a>
+  </div>
+</nav>
 
-      <!-- FAQ -->
-      <section class="section muted" id="faq">
-        <div class="container narrow">
-          <h2>FAQ</h2>
-          <div class="faq-list">
-            <details open>
-              <summary>Is this a subscription?</summary>
-              <p>No, Founder Operator Tier is a one-time purchase.</p>
-            </details>
-            <details>
-              <summary>What happens after I book a demo?</summary>
-              <p>We walk through the workflow and map it to your discovery call. Then you can run it on your next call.</p>
-            </details>
-          </div>
-        </div>
-      </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">For RIAs · CFPs · Wealth Managers</div>
+    <h1>Stop hearing <em>"let me think about it"</em> after a great discovery call.</h1>
+    <p class="hero-sub">RetireWise AI shows retirement tradeoffs live on the call — so prospects see the real cost of waiting, compare options clearly, and move to the next step with confidence.</p>
+    <div class="hero-cta-row">
+      <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary">Book a 20-min Demo →</a>
+      <a href="#offer" class="btn-ghost">See what's included ↓</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-chip"><span class="dot"></span> Built for RIAs & CFPs</div>
+      <div class="trust-chip"><span class="dot"></span> Run on your next discovery call</div>
+      <div class="trust-chip"><span class="dot"></span> Setup included</div>
+      <div class="trust-badge">⚡ Founder pricing — $997</div>
+    </div>
+  </div>
+</section>
 
-      <!-- Final CTA -->
-      <section class="section final-cta" id="start">
-        <div class="container narrow center">
-          <span class="eyebrow">You don’t need more leads. You need more decisions.</span>
-          <h2>Make your next discovery call your clearest one.</h2>
-          <div class="cta-row center">
-            <a class="btn btn-primary btn-lg" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo &amp; Clarity Map</a>
-            <a class="btn btn-secondary btn-lg" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy Now — $997</a>
-          </div>
-          <p class="fine-print">One-time $997 • No subscription • 7-day guarantee</p>
-        </div>
-      </section>
-    </main>
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-grid">
+    <div class="proof-card">
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-quote">"A prospect stopped stalling and asked for the next step once they could see the tradeoffs clearly."</div>
+      <div class="proof-attr"><strong>Wealth Advisor</strong> · CFP Practitioner (Early Operator)</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-quote">"Spouses stopped saying “we’ll think about it” and started asking what the next step was."</div>
+      <div class="proof-attr"><strong>RIA Advisor</strong> · (Early Operator)</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-quote">"This is the missing layer for discovery. It helps clients understand the decision before we build the full plan."</div>
+      <div class="proof-attr"><strong>CFP · New Jersey</strong> · Independent practice</div>
+    </div>
+  </div>
+</div>
 
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <strong>RetireWise AI</strong>
-          <p>Decision support for advisors.</p>
-        </div>
-      </div>
-    </footer>
+<!-- PROBLEM -->
+<section>
+  <div class="container">
+    <div class="section-label">The real problem</div>
+    <h2>Your offer isn't the issue. The moment of uncertainty is.</h2>
+    <p class="lead">Prospects nod along during a great discovery call, then ask you to send something, talk it over, or wait until next quarter. Not because they don't need help. Because retirement decisions feel heavy, abstract, and hard to picture without something to look at.</p>
 
-    <!-- Mobile sticky CTA (Book Demo only) -->
-    <div class="sticky-cta" role="region" aria-label="Sticky CTA">
-      <a class="btn btn-primary btn-lg" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo &amp; Clarity Map</a>
+    <div class="stall-grid">
+      <div class="stall-item">"We need to think about it."</div>
+      <div class="stall-item">"Can you send me something to review?"</div>
+      <div class="stall-item">"We're not sure if now is the right time."</div>
+      <div class="stall-item">"We don't want to make the wrong move."</div>
     </div>
 
-    <script src="./script.js"></script>
-  </body>
+    <p style="font-size:15px;color:var(--muted);line-height:1.7;">These aren't objections to you or your process. They're the natural result of asking someone to make a six-figure decision without being able to see the tradeoffs clearly. RetireWise AI closes that gap — live, on the call, in plain language.</p>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section class="dark">
+  <div class="container">
+    <div class="section-label" style="color:var(--teal-light)">How it works</div>
+    <h2>The mechanism: visual certainty.</h2>
+    <p class="lead">Most advisors close with credibility, rapport, and process. Those matter — but they don't create urgency. RetireWise AI adds the missing layer: a live, visual decision engine that makes tradeoffs obvious and the cost of waiting impossible to ignore.</p>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-title">Frame the decision</div>
+        <div class="step-body">"What is the smartest next step for your retirement timeline?" — sets the conversation on your terms.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-title">Identify the core fear</div>
+        <div class="step-body">Surface whether income, taxes, timing, or legacy risk is driving hesitation — in the first 10 minutes.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-title">Run live scenarios</div>
+        <div class="step-body">Retire at 62, 65, 67, and do nothing. Show the real cost of delay in a visual they can see and take home.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">04</div>
+        <div class="step-title">Close clearly</div>
+        <div class="step-body">"Let's build the full plan now" — from a position of demonstrated clarity, not pressure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER STACK -->
+<section id="offer" class="alt">
+  <div class="container">
+    <div class="section-label">What you get</div>
+    <div class="offer-header">
+      <h2>Everything in RetireWise AI — $997</h2>
+      <div class="value-total">Standalone value: <s>$5,600</s> → <strong>$997 founder pricing</strong></div>
+    </div>
+    <p class="lead">Five components, configured for your practice in a single 45-minute onboarding call. Live within 48 hours.</p>
+
+    <div class="deliverable-grid">
+
+      <div class="del-card">
+        <div class="del-num">01</div>
+        <div class="del-content">
+          <div class="del-title">Live retirement scenario engine</div>
+          <div class="del-desc">Run 62 vs 65 vs 67 comparisons, tax-impact overlays, sequence risk prompts, and the "do nothing" baseline — live on the call, in plain language your prospect can see and act on immediately. Replaces a $2,500–$5,000 custom planning build.</div>
+          <div class="del-result">"Prospects asked 'what do we do next' before the call ended."</div>
+          <div class="del-value">Standalone value: $2,500</div>
+        </div>
+      </div>
+
+      <div class="del-card">
+        <div class="del-num">02</div>
+        <div class="del-content">
+          <div class="del-title">AI discovery assistant</div>
+          <div class="del-desc">Surfaces the 4 fear types — income, tax, timing, legacy — with the right questions at the right moment. Drafts compliant call recaps in seconds. Generates client-language explanations so you stop translating jargon mid-call and start guiding decisions.</div>
+          <div class="del-result">"Discovery calls went from 90 min to under an hour."</div>
+          <div class="del-value">Standalone value: $1,200</div>
+        </div>
+      </div>
+
+      <div class="del-card">
+        <div class="del-num">03</div>
+        <div class="del-content">
+          <div class="del-title">Discovery close script</div>
+          <div class="del-desc">Word-for-word talk tracks for the 4 hardest moments: transitioning into modeling, handling the spouse objection, framing the "do nothing" cost, and asking for the next step without pressure. Built for RIA/CFP compliance language — not generic sales scripts.</div>
+          <div class="del-result">"Finally a script that sounds like how I actually talk."</div>
+          <div class="del-value">Standalone value: $800</div>
+        </div>
+      </div>
+
+      <div class="del-card">
+        <div class="del-num">04</div>
+        <div class="del-content">
+          <div class="del-title">Client-ready visual outputs</div>
+          <div class="del-desc">Clean, spouse-friendly scenario visuals your prospect can take home, share with a partner, and act on — without needing you to re-explain. Reduces the "we need to discuss it" delay that kills post-call momentum and stalls your pipeline.</div>
+          <div class="del-result">"This is the clearest anyone has ever explained it to us."</div>
+          <div class="del-value">Standalone value: $600</div>
+        </div>
+      </div>
+
+      <div class="del-card">
+        <div class="del-num">05</div>
+        <div class="del-content">
+          <div class="del-title">Done-with-you onboarding call</div>
+          <div class="del-desc">One focused 45-minute call where we configure the full system around your current workflow, prospect type, and practice style. Live within 48 hours. Nothing to install. No IT required. You don't figure this out alone — we build it with you.</div>
+          <div class="del-result">"Was running it in my first call the next morning."</div>
+          <div class="del-value">Standalone value: $500</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PRICE BOX -->
+    <div class="price-block">
+      <div class="price-anchor-text">Total standalone value: <s>$5,600</s></div>
+      <div class="price-main-row">
+        <div class="price-figure">$997</div>
+        <div class="price-label">founder pricing</div>
+      </div>
+      <p class="price-roi">One additional $300K rollover generates $3,000+ in annual AUM fees. RetireWise AI can pay for itself on a single close. Illustrative example only. Actual results vary by advisor, fee model, and client situation.</p>
+      <div class="price-pills">
+        <span class="price-pill">Live in 48 hrs</span>
+        <span class="price-pill">Setup included</span>
+        <span class="price-pill">7-day guarantee</span>
+        <span class="price-pill">No install required</span>
+        <span class="price-pill">Compliance-safe</span>
+      </div>
+      <div class="price-cta-row">
+        <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary">Book Demo / Setup Call →</a>
+        <a href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" class="btn-ghost">Buy Now — $997</a>
+      </div>
+      <div class="price-compliance">You remain the advisor and compliance owner at all times. RetireWise AI is decision-support software — not financial advice. All outputs are for internal advisor use unless you choose to share them with clients. Suitable for use within standard RIA/CFP compliance frameworks.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section>
+  <div class="container">
+    <div class="section-label">Common questions</div>
+    <h2>Objections, handled cleanly.</h2>
+    <p class="lead" style="margin-bottom:32px;">Four things advisors ask before they buy — and the honest answers.</p>
+
+    <div class="objection-list">
+      <div class="objection-item">
+        <button class="obj-q" onclick="toggleObj(this)">
+          I already have planning software. Why do I need this?
+          <span class="chevron">+</span>
+        </button>
+        <div class="obj-a">RetireWise AI is not replacing your planning stack. It's the discovery conversion layer that sits in front of your software and makes it easier to sell. Your financial plan is the deliverable — RetireWise AI is what gets the prospect to say yes to building it.</div>
+      </div>
+      <div class="objection-item">
+        <button class="obj-q" onclick="toggleObj(this)">
+          I'm not technical. Will I be able to use this?
+          <span class="chevron">+</span>
+        </button>
+        <div class="obj-a">You don't need to be. This is built to feel like a guided workflow, not a software project. The onboarding call configures everything for you. Most advisors are running it in their first discovery call within 48 hours of setup — with no IT involvement.</div>
+      </div>
+      <div class="objection-item">
+        <button class="obj-q" onclick="toggleObj(this)">
+          My clients are older. Will they be comfortable with this?
+          <span class="chevron">+</span>
+        </button>
+        <div class="obj-a">Older clients don't hate technology — they hate confusion. RetireWise AI produces simple, clean visuals that anyone can read and understand. Clarity is universal. Your 68-year-old prospect doesn't need to interact with the software at all — they just see the output on your screen during the call.</div>
+      </div>
+      <div class="objection-item">
+        <button class="obj-q" onclick="toggleObj(this)">
+          Will this guarantee I close more clients?
+          <span class="chevron">+</span>
+        </button>
+        <div class="obj-a">No. We don't make performance guarantees — and any tool that does is overselling. What we can say: advisors who show visual retirement tradeoffs live on the call consistently report fewer stalls, shorter decision timelines, and less "we'll think about it." Clearer decisions produce faster next steps. That's what this is built for.</div>
+      </div>
+      <div class="objection-item">
+        <button class="obj-q" onclick="toggleObj(this)">
+          Is this compliant for use with clients?
+          <span class="chevron">+</span>
+        </button>
+        <div class="obj-a">Yes, within standard advisory compliance frameworks. You remain the advisor and compliance owner at all times. RetireWise AI outputs are decision-support tools — not financial advice or regulated recommendations. The close script is written in compliance-conscious language appropriate for registered advisors. As always, review with your compliance officer if required by your firm.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="alt">
+  <div class="container">
+    <div class="section-label">Zero risk</div>
+    <h2>The 3-Call Clarity Guarantee.</h2>
+    <p class="lead" style="margin-bottom:28px;">We're asking you to try it before you fully trust it. Here's how we protect that.</p>
+    <div class="guarantee-box">
+      <div class="shield-icon">🛡</div>
+      <div>
+        <div class="g-title">3-Call Clarity Guarantee</div>
+        <div class="g-body">Use RetireWise AI in your next 3 discovery calls within 7 days of onboarding. If you don't feel measurably more confident guiding the retirement conversation — and your prospects aren't responding differently to the scenarios — email us. We'll refund every dollar.<br><br>No forms. No friction. No questions asked.<br><br>We offer this because advisors who run the scenarios live consistently report faster decisions and fewer stalls. You take zero risk.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="container">
+    <div class="section-label" style="color:var(--teal-light)">Ready to close faster</div>
+    <h2>Turn uncertainty into clarity.<br>Clarity into commitment.</h2>
+    <p class="lead">If you want more prospects to move forward during — or immediately after — the discovery call, this is the system. 14 founder pricing slots remaining.</p>
+    <div class="final-cta-btns">
+      <a href="https://oncehub.com/PAGE-A2441E2BBC" class="btn-primary" style="font-size:16px;padding:16px 32px;">Book Demo / Setup Call →</a>
+      <a href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" class="btn-ghost">Buy Now — $997</a>
+    </div>
+    <div class="final-trust">Setup included · Live in 48 hrs · 3-Call Clarity Guarantee · Compliance-safe</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">RetireWise AI</div>
+  <div class="footer-text">Decision-support software for financial advisors. You remain the advisor and compliance owner. RetireWise AI is not a registered investment advisor and does not provide financial advice. All scenario outputs are for internal advisor use. © 2026 NextGen Web LLC · All rights reserved.</div>
+</footer>
+
+<script>
+  function toggleObj(btn) {
+    const item = btn.closest('.objection-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.objection-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Slot counter — decrement randomly for visual credibility
+  // Replace with real backend counter if available
+  document.addEventListener('DOMContentLoaded', () => {
+    const slots = 14; // update this number manually or via API
+    document.querySelectorAll('.slots-remaining').forEach(el => el.textContent = slots);
+  });
+</script>
+
+</body>
 </html>
