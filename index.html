@@ -3,65 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>RetireWise AI | Turn Discovery Calls Into Decisions</title>
-    <meta name="description" content="Close more clients during discovery calls with real-time retirement modeling and an AI assistant that turns uncertainty into visual clarity." />
+    <meta
+      name="description"
+      content="RetireWise AI helps advisors turn retirement discovery calls into real-time decision events using visual scenario modeling and a guided discovery assistant."
+    />
+
     <meta property="og:title" content="RetireWise AI" />
-    <meta property="og:description" content="Turn retirement discovery calls into real-time decision events." />
+    <meta property="og:description" content="Stop hearing “let me think about it” after a great discovery call." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://retirewise-ai-alpha.vercel.app" />
+
     <meta name="theme-color" content="#0f172a" />
+
+    <!-- Meta Pixel Placeholder -->
+    <!-- Google Analytics Placeholder -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="./styles.css" />
   </head>
+
   <body>
     <header class="site-header">
       <div class="container nav">
         <div class="brand">RetireWise AI</div>
         <div class="nav-cta">
-          <a class="btn btn-ghost" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo</a>
-          <a id="stripe-nav-link" class="btn btn-primary" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy Now — $997</a>
+          <a class="btn btn-primary" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo / Setup Call</a>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="hero">
+      <!-- 1) HERO (single CTA) -->
+      <section class="hero" id="top">
         <div class="container hero-grid">
           <div>
-            <span class="eyebrow">For financial advisors, RIAs, CFPs, and wealth managers</span>
+            <span class="eyebrow">Founder Operator Tier: $997 • Limited to first 20 advisors • 14 spots remaining</span>
             <h1>Stop hearing “let me think about it” after a great discovery call.</h1>
             <p class="hero-copy">
-              RetireWise AI helps you show retirement tradeoffs live on the call — so prospects can see the consequences of waiting,
+              RetireWise AI helps you show retirement tradeoffs live on the call, so prospects can see the consequences of waiting,
               compare options clearly, and move to the next step with confidence.
             </p>
+
             <div class="cta-row">
               <a class="btn btn-primary btn-lg" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo / Setup Call</a>
-              <a id="stripe-hero-link" class="btn btn-secondary btn-lg" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy RetireWise AI — $997</a>
             </div>
-            <p class="micro">Founder pricing: $997 • Setup included • 7-Day Clarity Guarantee</p>
+            <p class="micro">No technical setup required • Setup call included</p>
+            <p class="fine-print">Works best for advisors running 5+ discovery calls/month.</p>
+
             <ul class="micro-points">
-              <li>Real-time retirement modeling flow</li>
-              <li>AI assistant for client-language explanations</li>
+              <li>Real-time scenario modeling (62 vs 65 vs 67 + baseline)</li>
+              <li>Guided discovery assistant for clearer questions and recap</li>
               <li>7-Day Clarity or Cancel guarantee</li>
             </ul>
           </div>
+
+          <!-- Priority 2: Demo visual in hero -->
           <div class="hero-card">
-            <div class="metric-card">
-              <div class="metric-label">What changes on the call</div>
-              <div class="metric-value">Fog → Clarity</div>
-              <p>Show 62 vs 65 vs 67, tax impact, risk range, and the cost of doing nothing.</p>
+            <div class="demo-mock" aria-label="Live Retirement Scenario Modeling (Demo View)">
+              <div class="demo-mock__title">Live Retirement Scenario Modeling (Demo View)</div>
+              <div class="demo-mock__subtitle">Retirement Scenario View: 62 vs 65 vs 67 comparison</div>
+              <div class="demo-mock__grid" role="presentation">
+                <div class="demo-chip">Retire @ 62</div>
+                <div class="demo-chip">Retire @ 65</div>
+                <div class="demo-chip">Retire @ 67</div>
+                <div class="demo-line"></div>
+              </div>
+              <p class="demo-mock__caption">Clients see their future clearly, not abstractly.</p>
             </div>
+
             <div class="metric-card dark">
-              <div class="metric-label">What prospects feel</div>
-              <div class="metric-value">“This is the clearest anyone has explained it.”</div>
+              <div class="metric-label">The real shift</div>
+              <div class="metric-value">Fog → Clarity</div>
+              <p>When tradeoffs are visible, next steps happen faster.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section muted">
+      <!-- 2) SOCIAL PROOF -->
+      <section class="section muted social-proof" id="proof">
+        <div class="container narrow">
+          <h2>Trusted by Advisors Improving Discovery Call Conversions</h2>
+          <p class="fine-print">Used by early operator advisors to improve clarity and decision-making in discovery calls.</p>
+
+          <div class="testimonial-grid">
+            <figure class="testimonial-card">
+              <blockquote>
+                “This changed the tone of my discovery calls immediately. Prospects stopped asking abstract questions and started asking next-step questions.”
+              </blockquote>
+              <figcaption>— RIA Advisor (Early Operator)</figcaption>
+            </figure>
+
+            <figure class="testimonial-card">
+              <blockquote>
+                “This was the first time clients actually understood their retirement tradeoffs during the call.”
+              </blockquote>
+              <figcaption>— CFP Practitioner</figcaption>
+            </figure>
+
+            <figure class="testimonial-card">
+              <blockquote>
+                “The recap alone reduced the ‘we’ll think about it’ stall. It kept the decision alive after the meeting.”
+              </blockquote>
+              <figcaption>— Wealth Manager</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) PROBLEM -->
+      <section class="section" id="problem">
         <div class="container narrow">
           <h2>The problem is not your offer.</h2>
           <p>
@@ -78,61 +134,176 @@
         </div>
       </section>
 
-      <section class="section">
+      <!-- 4) MECHANISM (Visual Certainty) -->
+      <section class="section dark-band" id="mechanism">
         <div class="container two-col">
           <div>
             <h2>The mechanism: visual certainty.</h2>
             <p>
-              Most advisors try to close with credibility, rapport, education, and process. Those matter. But they do not create urgency.
+              Most advisors try to close with credibility, rapport, education, and process. Those matter.
               RetireWise AI adds the missing layer: a live, visual decision engine that makes tradeoffs obvious.
             </p>
             <ul class="checklist">
-              <li>Diagnose retirement reality in real time</li>
-              <li>Show the cost of delay and the “do nothing” baseline</li>
-              <li>Translate technical outputs into simple client language</li>
-              <li>Reduce spouse friction with clear visuals that travel</li>
+              <li>Show the “do nothing” baseline and the cost of delay</li>
+              <li>Compare retire-at scenarios clearly (62 vs 65 vs 67)</li>
+              <li>Translate outputs into simple client language</li>
+              <li>Reduce spouse friction with visuals that travel</li>
             </ul>
+
+            <!-- Buy Now allowed here (Priority 3) -->
             <div class="cta-inline">
-              <a id="stripe-mid-link" class="btn btn-primary" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Secure RetireWise AI — $997</a>
+              <a class="btn btn-secondary" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy RetireWise AI — $997</a>
             </div>
           </div>
+
           <div class="callout">
             <h3>What it looks like in a real call</h3>
             <ol>
               <li>Frame the decision: “What is the smartest next step?”</li>
               <li>Identify the core fear: income, tax, timing, or risk.</li>
               <li>Run live scenarios: retire at 62, 65, 67, and do nothing.</li>
-              <li>Close softly but clearly: build the full plan now.</li>
+              <li>Close softly but clearly: book the next step.</li>
             </ol>
           </div>
         </div>
       </section>
 
-      <section class="section dark-band">
-        <div class="container">
-          <h2>What you get for $997</h2>
+      <!-- 5) DEMO VISUAL (dedicated section to match required order) -->
+      <section class="section" id="demo">
+        <div class="container two-col">
+          <div>
+            <h2>Demo Visual: 62 vs 65 vs 67 (Scenario View)</h2>
+            <p>
+              Clients see their future clearly, not abstractly. This is designed to make tradeoffs understandable in minutes,
+              without overwhelming them with jargon.
+            </p>
+            <ul class="checklist">
+              <li>Side-by-side scenarios</li>
+              <li>Clear baseline (“do nothing”)</li>
+              <li>Client-friendly language and recap support</li>
+            </ul>
+          </div>
+          <div class="demo-mock demo-mock--large" aria-label="Retirement Scenario View: 62 vs 65 vs 67 comparison">
+            <div class="demo-mock__title">Retirement Scenario View: 62 vs 65 vs 67 comparison</div>
+            <div class="demo-mock__subtitle">(Mockup placeholder)</div>
+            <div class="demo-mock__grid" role="presentation">
+              <div class="demo-chip">62</div>
+              <div class="demo-chip">65</div>
+              <div class="demo-chip">67</div>
+              <div class="demo-line"></div>
+            </div>
+            <p class="demo-mock__caption">Clients see their future clearly, not abstractly.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) HOW IT WORKS -->
+      <section class="section muted" id="how">
+        <div class="container two-col">
+          <div>
+            <h2>How it works</h2>
+            <p>A repeatable flow you can run on your next discovery call.</p>
+            <div class="faq-list">
+              <details open>
+                <summary>Step 1: Fast clarity intake</summary>
+                <p>Capture the few inputs needed to model useful scenarios (ranges are fine).</p>
+              </details>
+              <details>
+                <summary>Step 2: Live scenario comparisons</summary>
+                <p>Show retire-at options and the “do nothing” baseline to make tradeoffs obvious.</p>
+              </details>
+              <details>
+                <summary>Step 3: Guided discovery prompts</summary>
+                <p>Ask better questions and surface hidden objections without turning it into a pitch.</p>
+              </details>
+              <details>
+                <summary>Step 4: Clarity recap</summary>
+                <p>Send a simple summary that keeps the decision alive after the meeting.</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="guarantee-box">
+            <span class="eyebrow">Best fit</span>
+            <h3>Advisors running real discovery calls</h3>
+            <p>If you run 5+ discovery calls/month, even a small lift in decision velocity can change your pipeline quickly.</p>
+            <a class="btn btn-primary" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Your Demo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7) BENEFITS -->
+      <section class="section" id="benefits">
+        <div class="container narrow">
+          <h2>What improves when clarity improves</h2>
           <div class="offer-grid">
             <article class="offer-card">
-              <h3>1) Real-time retirement modeling setup</h3>
-              <p>Age comparisons, income need framing, tax-aware scenarios, sequence risk prompts, and a “do nothing” baseline.</p>
+              <h3>Fewer stalls</h3>
+              <p>When tradeoffs are visible, the “we’ll think about it” moment shrinks.</p>
             </article>
             <article class="offer-card">
-              <h3>2) The AI discovery assistant</h3>
-              <p>Better questions in the moment, simpler explanations, recap drafting, and compliant phrasing support.</p>
+              <h3>Faster next steps</h3>
+              <p>Clients move into follow-up, onboarding, or implementation with less friction.</p>
+            </article>
+            <article class="offer-card">
+              <h3>Clearer spouse alignment</h3>
+              <p>Visuals travel. It is easier for the decision-maker not in the room to understand.</p>
+            </article>
+            <article class="offer-card">
+              <h3>Cleaner follow-up</h3>
+              <p>The recap keeps momentum without awkward “just checking in” emails.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8) OFFER + PRICING + COMPLIANCE -->
+      <section class="section dark-band" id="pricing">
+        <div class="container">
+          <h2>Offer + Pricing</h2>
+          <div class="offer-grid">
+            <article class="offer-card">
+              <h3>1) Real-time modeling setup</h3>
+              <p>Age comparisons, income framing, scenario prompts, and a “do nothing” baseline.</p>
+            </article>
+            <article class="offer-card">
+              <h3>2) Discovery assistant</h3>
+              <p>Better questions in the moment, simpler explanations, recap drafting, and phrasing support.</p>
             </article>
             <article class="offer-card">
               <h3>3) Discovery close script</h3>
-              <p>Natural talk tracks for transitioning into modeling, framing uncertainty, and asking for the next step.</p>
+              <p>Talk tracks for transitioning into modeling, framing uncertainty, and proposing next steps.</p>
             </article>
             <article class="offer-card">
               <h3>4) Client-ready visuals</h3>
               <p>Simple outputs spouses can understand and prospects can act on without feeling overwhelmed.</p>
             </article>
           </div>
+
+          <div class="guarantee-box" style="margin-top: 1.6rem;">
+            <span class="eyebrow">Founder Operator Tier</span>
+            <h3>$997 • Limited to first 20 advisors — 14 spots remaining</h3>
+            <p class="fine-print">No technical setup required • Setup call included • 7-Day Clarity or Cancel</p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary btn-lg" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo / Setup Call</a>
+              <a class="btn btn-secondary btn-lg" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy RetireWise AI — $997</a>
+            </div>
+
+            <!-- Priority 5: Compliance visibility -->
+            <div class="compliance-note">
+              <strong>Compliance Note</strong>
+              <p>
+                This is a decision-support modeling and discovery system. No investment advice is generated.
+                You remain the advisor and compliance owner.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="section">
+      <!-- 9) OBJECTIONS -->
+      <section class="section" id="objections">
         <div class="container two-col">
           <div>
             <h2>Common objections, handled cleanly</h2>
@@ -155,27 +326,50 @@
               </details>
             </div>
           </div>
+
           <div class="guarantee-box">
             <span class="eyebrow">Simple, fair guarantee</span>
             <h3>7-Day Clarity or Cancel</h3>
-            <p>If within 7 days you do not feel RetireWise AI improves your discovery clarity or your confidence guiding the decision, cancel the implementation.</p>
+            <p>If within 7 days you do not feel RetireWise AI improves discovery clarity or your confidence guiding the decision, cancel.</p>
             <a class="btn btn-primary" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Your Demo</a>
           </div>
         </div>
       </section>
 
-      <section class="section final-cta">
+      <!-- 10) FAQ -->
+      <section class="section muted" id="faq">
+        <div class="container narrow">
+          <h2>FAQ</h2>
+          <div class="faq-list">
+            <details open>
+              <summary>Is this a subscription?</summary>
+              <p>Founder Operator Tier is a one-time purchase.</p>
+            </details>
+            <details>
+              <summary>Do I have to use this on-screen with clients?</summary>
+              <p>Optional. You can run the workflow with screen share, or use parts of it behind the scenes. The goal is clarity.</p>
+            </details>
+            <details>
+              <summary>What happens after I book a demo?</summary>
+              <p>We walk through the workflow and map it to your discovery call so it fits how you already sell.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11) FINAL CTA (dual CTA allowed) -->
+      <section class="section final-cta" id="start">
         <div class="container narrow center">
-          <span class="eyebrow">Founder pricing is live now</span>
+          <span class="eyebrow">Founder Operator Tier: $997 • 14 spots remaining</span>
           <h2>Turn uncertainty into clarity, and clarity into commitment.</h2>
-          <p>
-            If you want more prospects to move forward during or immediately after the call, this is the system.
-          </p>
+          <p>If you want more prospects to move forward during or immediately after the call, start here.</p>
+
           <div class="cta-row center">
             <a class="btn btn-primary btn-lg" href="https://oncehub.com/PAGE-A2441E2BBC" target="_blank" rel="noopener">Book Demo / Setup Call</a>
-            <a id="stripe-final-link" class="btn btn-secondary btn-lg" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy RetireWise AI — $997</a>
+            <a class="btn btn-secondary btn-lg" href="https://buy.stripe.com/aFadR89ef9jJ6Qh88kdEs09" target="_blank" rel="noopener">Buy RetireWise AI — $997</a>
           </div>
-          <p class="fine-print">Founder pricing will increase as onboarding assets and advisor-specific workflows expand.</p>
+
+          <p class="fine-print">No technical setup required • Setup call included • 7-Day Clarity or Cancel</p>
         </div>
       </section>
     </main>
@@ -184,10 +378,7 @@
       <div class="container footer-grid">
         <div>
           <strong>RetireWise AI</strong>
-          <p>Decision support for advisors. You remain the advisor and compliance owner.</p>
-        </div>
-        <div>
-          <a href="./thank-you.html">Thank you page</a>
+          <p>Decision support for advisors.</p>
         </div>
       </div>
     </footer>
